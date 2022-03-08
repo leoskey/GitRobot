@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 
 namespace GitRobot.Controllers;
 
+[Route("api/[controller]")]
 public class GitLabController : ControllerBase
 {
     private readonly ILogger<GitLabController> _logger;
