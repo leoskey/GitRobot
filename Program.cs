@@ -1,5 +1,3 @@
-using System.Text.Encodings.Web;
-using System.Text.Unicode;
 using GitRobot.Models;
 using Polly;
 

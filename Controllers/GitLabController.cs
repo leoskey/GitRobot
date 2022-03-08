@@ -33,15 +33,15 @@ public class GitLabController : ControllerBase
         switch (request.object_kind)
         {
             case "build":
-                var message = await BuildMessageAsync(request);
+                var message = BuildMessage(request);
                 await SendMessageToWeworkAsync(robotId, message);
-                message = await BuildIfSuccessMessageAsync(request);
+                message = BuildIfSuccessMessage(request);
                 await SendMessageToWeworkAsync(robotId, message);
                 break;
         }
     }
 
-    private async Task<string> BuildIfSuccessMessageAsync(GitlabWebhookRequest request)
+    private string BuildIfSuccessMessage(GitlabWebhookRequest request)
     {
         var status = request.build_status;
         if (!string.Equals(status, "success"))
@@ -66,7 +66,7 @@ public class GitLabController : ControllerBase
         return content;
     }
 
-    private async Task<string> BuildMessageAsync(GitlabWebhookRequest request)
+    private string BuildMessage(GitlabWebhookRequest request)
     {
         var markdown = @$"
 Gitlab-CI 构建 {request.build_status} 通知
