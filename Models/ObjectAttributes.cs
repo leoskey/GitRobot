@@ -13,6 +13,6 @@ public class ObjectAttributes
     public List<string> stages { get; set; }
     public string created_at { get; set; }
     public string finished_at { get; set; }
-    public int duration { get; set; }
+    public int? duration { get; set; }
     public List<object> variables { get; set; }
 }
